@@ -17,7 +17,6 @@ const Clock = ()=>{
       <div className="number number11">11</div>
       <div className="number number12">12</div>
     </div>
-
     )
 }
 export default Clock;
