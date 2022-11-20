@@ -1,9 +1,24 @@
+//import  "./time.jsx";
+import React, { useState, useEffect } from "react"
 const Clock = ()=>{
+     const [hora, setHora] = useState(0);
+     const [minutos, setMinutos] = useState(0);
+     const [segundos, setSegundos] = useState(0);
+
+     useEffect(() => {
+         setInterval(() => {
+              var date = new Date(); 
+              var segundo = date.getSeconds();
+              setSegundos(segundo*6);
+              var minuto = date.getMinutes();
+              setMinutos(minuto*6);
+              var hora = date.getHours();
+              setHora(hora*30);              
+         });
+       });
+
     return(
-        <div className="clock">
-      <div className="hand hour" data-hour-hand></div>
-      <div className="hand minute" data-minute-hand></div>
-      <div className="hand second" data-second-hand></div>
+      <div className="clock">
       <div className="number number1">1</div>
       <div className="number number2">2</div>
       <div className="number number3">3</div>
@@ -16,6 +31,9 @@ const Clock = ()=>{
       <div className="number number10">10</div>
       <div className="number number11">11</div>
       <div className="number number12">12</div>
+      <div className="hand hour" id='hour' data-hour-hand style={{transform: `translateX(-50%) rotate(${hora}deg)`}}></div>
+      <div className="hand minute" id='minute' style={{transform: `translateX(-50%) rotate(${minutos}deg)`}}  data-minute-hand ></div>
+      <div className="hand second"id='second' style={{transform: `translateX(-50%) rotate(${segundos}deg)`}}  data-second-hand></div>
     </div>
     )
 }
